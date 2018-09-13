@@ -36,4 +36,6 @@
 ![path.png]
 * 按下esc，输入命令 `:wq` 后回车，保存并退出profile文件。
 * 输入命令 `source /etc/profile ` 读取并执行更新后的profile文件。
+* 输入命令 `hadoop` ，如果成功配置环境变量，就会输出相关信息如下图。
+![]
 
