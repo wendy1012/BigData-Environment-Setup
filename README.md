@@ -4,5 +4,4 @@
 ## Hadoop搭建：
 * 打开虚拟机，打开终端。
 * 在终端中输入 `rz` ，从本地上传配置文件。
-
-![Image text](BigData-Environment-Setup/ScreenShoot/rz.png)
+![](ScreenShoot/rz.png)
