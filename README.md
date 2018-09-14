@@ -65,17 +65,17 @@
 * 修改yarn-env.sh文件中的 `export JAVA_HOME=/usr/local/java`(修改为环境变量中JAVA_HOME的地址)
 * 在文件core-site.xml文件中添加：
 
-`<configuration> 
-  <property> 
-    <name>fs.default.name</name> 
-    <value>hdfs://192.168.2.101:9000</value>  ///和虚拟机的IP一致
-    <description>HDFS的URI</description> 
-  </property> 
-  <property> 
-    <name>hadoop.tmp.dir</name> 
-    <value> /hadoop/hadoop/tmp </value>   ///之前新建的tmp文件夹地址
-    <description>临时文件夹</description> 
-  </property> 
-</configuration>`
+`<configuration>` 
+ `<property>` 
+    `<name>fs.default.name</name>` 
+    `<value>hdfs://192.168.2.101:9000</value>`  ///和虚拟机的IP一致
+    `<description>HDFS的URI</description>` 
+  `</property>` 
+  `<property>` 
+    `<name>hadoop.tmp.dir</name>` 
+    `<value> /hadoop/hadoop/tmp </value>`   ///之前新建的tmp文件夹地址
+    `<description>临时文件夹</description>` 
+  `</property>` 
+`</configuration>`
 （一定要注意缩进正确）
 * 在hdfs-site.xml文件中添加
