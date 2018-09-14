@@ -53,5 +53,30 @@
 
 ![](ScreenShoot/hadoopInfo.png)
 
-## SSH免密码登入
+### Hadoop配置文件
 
+* 在hadoop文件夹内新建tmp、hdfs/name、hdfs/data文件夹，命令为 `mkdir tmp`，`mkdir -p hdfs/name`，`mkdir -p hdfs/data`
+
+![](newHadoopFile.png)
+
+* 修改新建文件夹的权限。`chmod -R 777 hdfs/` ，`chmod -R 777 tmp/`
+* 在Notepad++中找到Hadoop的一些配置文件，hadoop-env.sh、yarn-env.sh、core-site.xml、hdfs-site.xml、mapred-site.xml、yarn-site.xml（这里如果没有安装Notepad++，可以直接在终端里修改，但是Notepad++中文件修改比较直观，推荐使用。）
+* 修改hadoop-env.sh文件中的 `export JAVA_HOME=/usr/local/java`(修改为环境变量中JAVA_HOME的地址)
+* 修改yarn-env.sh文件中的 `export JAVA_HOME=/usr/local/java`(修改为环境变量中JAVA_HOME的地址)
+* 在文件core-site.xml文件中添加：
+`
+<configuration> 
+  <property> 
+    <name>fs.default.name</name> 
+    <value>hdfs://192.168.2.101:9000</value>  ///和虚拟机的IP一致
+    <description>HDFS的URI</description> 
+  </property> 
+  <property> 
+    <name>hadoop.tmp.dir</name> 
+    <value> /hadoop/hadoop/tmp </value>   ///之前新建的tmp文件夹地址
+    <description>临时文件夹</description> 
+  </property> 
+</configuration>
+`
+（一定要注意缩进正确）
+* 在hdfs-site.xml文件中添加
