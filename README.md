@@ -57,25 +57,86 @@
 
 * 在hadoop文件夹内新建tmp、hdfs/name、hdfs/data文件夹，命令为 `mkdir tmp`，`mkdir -p hdfs/name`，`mkdir -p hdfs/data`
 
-![](newHadoopFile.png)
+![](ScreenShoot/newHadoopFile.png)
 
 * 修改新建文件夹的权限。`chmod -R 777 hdfs/` ，`chmod -R 777 tmp/`
 * 在Notepad++中找到Hadoop的一些配置文件，hadoop-env.sh、yarn-env.sh、core-site.xml、hdfs-site.xml、mapred-site.xml、yarn-site.xml（这里如果没有安装Notepad++，可以直接在终端里修改，但是Notepad++中文件修改比较直观，推荐使用。）
 * 修改hadoop-env.sh文件中的 `export JAVA_HOME=/usr/local/java`(修改为环境变量中JAVA_HOME的地址)
 * 修改yarn-env.sh文件中的 `export JAVA_HOME=/usr/local/java`(修改为环境变量中JAVA_HOME的地址)
 * 在文件core-site.xml文件中添加：
+```java
+<configuration> 
+  <property> 
+    <name>fs.default.name</name>
+    <value>hdfs://192.168.2.101:9000</value>  ///和虚拟机的IP一致
+    <description>HDFS的URI</description> 
+  </property> 
+  <property> 
+    <name>hadoop.tmp.dir</name> 
+    <value>/hadoop/hadoop/tmp</value>   ///之前新建的tmp文件夹地址
+    <description>临时文件夹</description> 
+  </property> 
+</configuration>
+```
+（一定要注意缩进正确,不要有空格）
+* 在hdfs-site.xml文件中添加：
+```java
+<property>
+  <name>dfs.name.dir</name> 
+  <value>/hadoop/hadoop/hdfs/name</value>             ///之前新建的hdfs/name文件夹地址
+  <description>namenode元数据</description>    
+</property> 
+<property> 
+  <name>dfs.data.dir</name> 
+  <value>/hadoop/hadoop/hdfs/data</value>             ///之前新建的hdfs/data文件夹地址
+  <description>datanode物理存储位置</description> 
+</property>
+<property> 
+  <name>dfs.replication</name> 
+  <value>1</value> 
+  <description>副本个数，配置默认是3,应小于datanode机器数量</description> 
+</property>
+```
+* 在mapred-site.xml文件中添加：
+```java
+<configuration> 
+  <property> 
+    <name>mapreduce.framework.name</name> 
+    <value>yarn</value> 
+  </property> 
+</configuration>
+```
+* 在yarn-site.xml文件中添加：
+```java
+<configuration> 
+  <property> 
+    <name>yarn.nodemanager.aux-services</name> 
+    <value>mapreduce_shuffle</value> 
+  </property> 
+  <property> 	
+     <name>yarn.resourcemanager.webapp.address</name> 
+     <value>192.168.2.101:8099</value> 
+  </property> 
+</configuration>
+```
+* 全部文件配置完，保存。
 
-`<configuration>` 
- `<property>` 
-    `<name>fs.default.name</name>` 
-    `<value>hdfs://192.168.2.101:9000</value>`  ///和虚拟机的IP一致
-    `<description>HDFS的URI</description>` 
-  `</property>` 
-  `<property>` 
-    `<name>hadoop.tmp.dir</name>` 
-    `<value> /hadoop/hadoop/tmp </value>`   ///之前新建的tmp文件夹地址
-    `<description>临时文件夹</description>` 
-  `</property>` 
-`</configuration>`
-（一定要注意缩进正确）
-* 在hdfs-site.xml文件中添加
+### 启动Hadoop
+
+* 格式化namenode，进入到Hadoop文件夹中的bin目录下。
+
+![](ScreenShoot/bin.png)
+
+* 输入命令 `./hdfs namenode -format` 对namenode进行格式化。
+
+![](ScreenShoot/format.png)
+
+![](ScreenShoot/success.png)
+
+* 进入到Hadoop文件夹中的sbin目录下。
+* 输入命令`./hdfs start-dfs.sh`，启动 NameNode 和 DataNode守护进程。
+* 输入命令`./start-yarn.sh`，启动 ResourceManager 和 NodeManager 守护进程。
+（遇到询问就选择yes）
+* 输入命令 `jps` 可查询是否成功开启Hadoop。
+
+![](ScreenShoot/final.png)
