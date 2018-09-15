@@ -1,6 +1,6 @@
 # BigData-Environment-Setup
 配置Hadoop，Hive，Zookeeper，HBase方法总结
-本机已经搭建Linux环境，安装secureCRT，Notepa++
+本机已经搭建Linux环境，安装secureCRT，Notepad++
 ## Hadoop搭建：
 
 ### 文件上传，解压：
@@ -140,3 +140,5 @@
 * 输入命令 `jps` 可查询是否成功开启Hadoop。
 
 ![](ScreenShoot/final.png)
+
+* 当关闭虚拟机前一定要用命令同时关闭Hadoop。`/hadoop/hadoop/sbin/stop-all.sh`
