@@ -142,3 +142,4 @@
 ![](ScreenShoot/final.png)
 
 * 当关闭虚拟机前一定要用命令同时关闭Hadoop。`/hadoop/hadoop/sbin/stop-all.sh`
+* 之后使用Hadoop可用命令 `/hadoop/hadoop/sbin/start-all.sh` 直接开启。
