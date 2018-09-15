@@ -1,6 +1,13 @@
 # BigData-Environment-Setup
 配置Hadoop，Hive，Zookeeper，HBase方法总结
 本机已经搭建Linux环境，安装secureCRT，Notepad++
+[Hadoop搭建](## Hadoop搭建：)
+
+
+
+
+
+
 ## Hadoop搭建：
 
 ### 文件上传，解压：
