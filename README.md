@@ -2,7 +2,10 @@
 配置Hadoop，Hive，Zookeeper，HBase方法总结
 本机已经搭建Linux环境，安装secureCRT，Notepad++
 
-<a href ="#hadoop">Hadoop</a>
+## <a href ="#hadoop">Hadoop</a>
+## <a href ="#hive">Hive</a>
+## <a href ="#zookeeper">Zookeeper</a>
+## <a href ="#HBase">HBase</a>
 
 
 
@@ -33,10 +36,9 @@
 
 
 
+<a id ="hadoop"/>
 
-
-
-## Hadoop搭建：<a id ="hadoop"/>
+## Hadoop搭建：
 
 ### 文件上传，解压：
 
