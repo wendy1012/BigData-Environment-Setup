@@ -156,4 +156,18 @@
  ---
  <a id ="hive"/>
  
- ## Hive搭建：
+## Hive搭建：
+ 
+### 文件上传，解压：
+* 打开虚拟机，打开终端。
+* 输入`rz` 命令上传Hive的压缩包文件到之前的software文件夹内。
+* 同样用`tar -zxf` 命令解压。
+* 将解压后的文件夹重命名并移动到Hadoop文件夹下。
+### 环境变量修改：
+* 输入命令`vim /etc/profile ` ，打开系统环境变量文件。
+* 添加Hive的环境变量地址。 `export HIVE_HOME=/hadoop/hive`。
+* 在PATH后添加 `:$HIVE_HOME/bin`
+* 保存退出后，输入命令 `source /etc/profile ` 读取并执行更新后的profile文件。
+* 输入命令`cd /hadoop/hive/conf ` 进入目录下。
+* 拷贝文件 hive-site.xml 和 hive-env.sh。（`cp hive-site.xml.template hive-site.xml`& `cp hive-env.sh.template hive-env.sh`）
+* 在Notepad++中打开hive-site.xml文件。（在目录 /hadoop/hive/conf 下）
